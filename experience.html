@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | Nagaraj Umatar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Dark Theme - Matching #1f242d */
+        body { background-color: #1f242d; color: white; scroll-behavior: smooth; transition: background-color 0.3s, color 0.3s; }
+        .text-cyan { color: #00d2ff; }
+        .bg-cyan { background-color: #00d2ff; }
+        /* Navigation & Section Background - Seamless look */
+        nav, section, footer { background-color: #1f242d; transition: background-color 0.3s, border-color 0.3s; }
+        /* --- LIGHT MODE UPDATES --- */
+        body.light-mode {
+            background-color: #ffffff;
+            color: #000000; /* Main body text black */
+        }
+        /* Pure White Header Background in Light Mode */
+        body.light-mode nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        /* Force Header Text to Dark Black in Light Mode */
+        body.light-mode nav .logo-text,
+        body.light-mode nav .nav-link {
+            color: #000000 !important;
+        }
+        body.light-mode section {
+            background-color: #ffffff;
+        }
+        body.light-mode .bg-card {
+            background-color: #f9fafb;
+            border-color: #e5e7eb;
+            color: #000000;
+        }
+        body.light-mode .text-gray-300,
+        body.light-mode .text-gray-400 {
+            color: #374151;
+        }
+        body.light-mode .bg-white {
+            background-color: #1a1a1a; /* Timeline dot flips color */
+        }
+        body.light-mode footer {
+            background-color: #ffffff;
+            border-color: #e5e7eb;
+            color: #000000;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <nav class="sticky top-0 z-50 flex justify-between items-center px-10 py-6 max-w-7xl mx-auto border-b border-gray-800 transition-colors">
+        <div class="text-2xl font-bold text-cyan-400 logo-text">Nagaraj U.</div>
+        <div class="hidden md:flex space-x-8 text-gray-300 font-medium">
+            <a href="index.html" class="nav-link hover:text-cyan-400 transition duration-300">Home</a>
+            <a href="about.html" class="nav-link hover:text-cyan-400 transition duration-300">About</a>
+            <a href="skills.html" class="nav-link hover:text-cyan-400 transition duration-300">Skills</a>
+            <a href="experience.html" class="nav-link text-cyan-400">Experience</a>
+            <a href="projects.html" class="nav-link hover:text-cyan-400 transition duration-300">Projects</a>
+            <a href="contact.html" class="nav-link hover:text-cyan-400 transition duration-300">Contact</a>
+        </div>
+        <div>
+            <i id="theme-toggle" class="fas fa-moon text-xl text-cyan-400 cursor-pointer hover:scale-110 transition"></i>
+        </div>
+    </nav>
+    <section id="experience" class="min-h-screen py-20 px-[10%] transition-colors">
+        <h2 class="text-5xl font-bold text-center mb-20">Work <span class="text-cyan">Experience</span></h2>
+        <div class="relative max-w-5xl mx-auto">
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-cyan h-full hidden md:block"></div>
+            <div class="relative mb-12 flex flex-col md:flex-row items-center w-full">
+                <div class="md:w-1/2 md:pr-12 md:text-right">
+                    <div class="bg-card bg-[#323946] p-8 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-400 transition duration-300">
+                        <span class="text-cyan font-bold"><i class="fas fa-calendar-alt mr-2"></i>Sept 2025 – Dec 2025</span>
+                        <h3 class="text-2xl font-bold mt-2">SAP ABAP HANA Trainee</h3>
+                        <h4 class="text-lg mb-4 italic opacity-80">RIA Institute of Technology, Bengaluru</h4>
+                        <ul class="text-sm leading-relaxed space-y-2 opacity-90">
+                            <li>• Completed 3-month hands-on training on SAP ABAP and S/4HANA platform.</li>
+                            <li>• Developed programs using Data Dictionary, Internal Tables, and ALV Reports.</li>
+                            <li>• Worked on Open SQL, BAPI, and BADI for data integration.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-white border-4 border-cyan-400 rounded-full z-10 hidden md:block shadow-[0_0_15px_#00d2ff]"></div>
+                <div class="md:w-1/2"></div>
+            </div>
+            <div class="relative mb-12 flex flex-col md:flex-row items-center w-full">
+                <div class="md:w-1/2"></div>
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-white border-4 border-cyan-400 rounded-full z-10 hidden md:block shadow-[0_0_15px_#00d2ff]"></div>
+                <div class="md:w-1/2 md:pl-12">
+                    <div class="bg-card bg-[#323946] p-8 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-400 transition duration-300">
+                        <span class="text-cyan font-bold"><i class="fas fa-calendar-alt mr-2"></i>Feb 2025 – May 2025</span>
+                        <h3 class="text-2xl font-bold mt-2">Full-Stack Web Development Intern</h3>
+                        <h4 class="text-lg mb-4 italic opacity-80">ParvaM ConsulTech Pvt. Ltd.</h4>
+                        <ul class="text-sm leading-relaxed space-y-2 opacity-90">
+                            <li>• Developed responsive front-end interfaces using HTML, CSS, and JavaScript.</li>
+                            <li>• Built backend services using Java, Spring Boot and MySQL.</li>
+                            <li>• Collaborated in agile sprints for full development lifecycle.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="py-10 text-center text-gray-500 border-t border-gray-800 transition-colors">
+        <p>© 2026 Nagaraj Umatar. All Rights Reserved.</p>
+    </footer>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.classList.replace('fa-moon', 'fa-sun');
+        }
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                themeToggle.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeToggle.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagaraj Umatar | SAP ABAP Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Dark Theme - #1f242d */
+        body {
+            background-color: #1f242d;
+            color: white;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        /* Navigation & Footer backgrounds */
+        nav, footer { transition: background-color 0.3s, border-color 0.3s; }
+        /* Profile Image Animations */
+        .profile-border {
+            border: 4px solid #00d2ff;
+            box-shadow: 0 0 20px #00d2ff;
+            animation: float 4s ease-in-out infinite, pulse-glow 3s infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 210, 255, 0.6); }
+            50% { box-shadow: 0 0 40px rgba(0, 210, 255, 0.9); }
+        }
+        /* --- LIGHT MODE UPDATES --- */
+        body.light-mode {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+        /* Pure White Header and Dark Black Text in Light Mode */
+        body.light-mode nav {
+            background-color: #ffffff !important;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        body.light-mode nav .logo-text,
+        body.light-mode nav .nav-link {
+            color: #000000 !important;
+        }
+        body.light-mode .text-gray-400,
+        body.light-mode .text-gray-200,
+        body.light-mode h3 {
+            color: #1a1a1a !important;
+        }
+        body.light-mode footer {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            border-top: 1px solid #e5e7eb;
+        }
+        .typed-cursor {
+            color: #22d3ee;
+            font-size: 1.875rem;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <nav class="sticky top-0 z-50 bg-[#1f242d] flex justify-between items-center px-10 py-6 max-w-7xl mx-auto border-b border-gray-800 transition-colors">
+        <div class="text-2xl font-bold text-cyan-400 logo-text">Nagaraj U.</div>
+        <div class="hidden md:flex space-x-8 text-gray-300 font-medium">
+            <a href="index.html" class="nav-link text-cyan-400">Home</a>
+            <a href="about.html" class="nav-link hover:text-cyan-400 transition duration-300">About</a>
+            <a href="skills.html" class="nav-link hover:text-cyan-400 transition duration-300">Skills</a>
+            <a href="experience.html" class="nav-link hover:text-cyan-400 transition duration-300">Experience</a>
+            <a href="projects.html" class="nav-link hover:text-cyan-400 transition duration-300">Projects</a>
+            <a href="contact.html" class="nav-link hover:text-cyan-400 transition duration-300">Contact</a>
+        </div>
+        <div>
+            <i id="theme-toggle" class="fas fa-moon text-xl text-cyan-400 cursor-pointer hover:scale-110 transition"></i>
+        </div>
+    </nav>
+    <main id="home" class="max-w-7xl mx-auto px-10 mt-10 md:mt-20 flex flex-col md:flex-row items-center justify-between">
+        <div class="md:w-1/2 space-y-6">
+            <h3 class="text-xl font-semibold text-gray-200">Hello, It's Me</h3>
+            <h1 class="text-6xl font-bold">Nagaraj Umatar</h1>
+            <h2 class="text-3xl font-bold">And I'm a <span id="typing-text" class="text-cyan-400"></span></h2>
+            <p class="text-gray-400 leading-relaxed text-lg">
+                I am a dedicated and certified SAP ABAP trainee with intensive experience in core ABAP concepts.
+                I specialize in developing efficient solutions within SAP S/4HANA systems, focusing on performance tuning,
+                debugging, and full-cycle RICEFW development.
+            </p>
+            <div class="flex space-x-4">
+                <a href="https://linkedin.com/in/nagaraj-umatar" target="_blank" class="w-10 h-10 border border-cyan-400 rounded-full flex items-center justify-center text-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/NAGARAJDU" target="_blank" class="w-10 h-10 border border-cyan-400 rounded-full flex items-center justify-center text-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <a href="Resume.pdf"
+               download="Nagaraj_Umatar_Resume.pdf"
+               target="_blank"
+               class="inline-block bg-cyan-400 text-black px-8 py-3 rounded-full font-bold shadow-[0_0_20px_rgba(0,255,255,0.5)] hover:scale-105 transition-transform duration-300">
+                Download Resume
+            </a>
+        </div>
+        <div class="md:w-1/2 flex justify-center mt-12 md:mt-0">
+            <div class="relative w-80 h-80">
+                <img src="images/NAGARAJ NU.jpg"
+                     alt="Nagaraj Umatar"
+                     class="w-full h-full object-cover rounded-full profile-border">
+            </div>
+        </div>
+    </main>
+    <footer class="mt-40 border-t border-gray-800 py-10 text-center text-gray-500 transition-colors">
+        <p>© 2026 Nagaraj Umatar. All Rights Reserved.</p>
+    </footer>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        // Unified key name: 'theme' matches your About page logic
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.classList.replace('fa-moon', 'fa-sun');
+        }
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            let theme = 'dark';
+            if (body.classList.contains('light-mode')) {
+                theme = 'light';
+                themeToggle.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                themeToggle.classList.replace('fa-sun', 'fa-moon');
+            }
+            // Match the key exactly to ensure cross-page synchronization
+            localStorage.setItem('theme', theme);
+        });
+        // Typing Effect Logic
+        var typed = new Typed('#typing-text', {
+            strings: ['SAP ABAP Developer', 'Technical Consultant'],
+            typeSpeed: 70,
+            backSpeed: 50,
+            backDelay: 2000,
+            loop: true
+        });
+    </script>
+</body>
+</html>
