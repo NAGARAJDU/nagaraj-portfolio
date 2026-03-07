@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagaraj Umatar | SAP ABAP Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Dark Theme - #1f242d */
+        body {
+            background-color: #1f242d;
+            color: white;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .text-cyan { color: #00d2ff; }
+        
+        nav, section, footer { transition: background-color 0.3s, border-color 0.3s; }
+
+        /* Profile Image Animations */
+        .profile-border {
+            border: 4px solid #00d2ff;
+            box-shadow: 0 0 20px #00d2ff;
+            animation: float 4s ease-in-out infinite, pulse-glow 3s infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 210, 255, 0.6); }
+            50% { box-shadow: 0 0 40px rgba(0, 210, 255, 0.9); }
+        }
+
+        /* Card Styles */
+        .skill-card, .bg-card, .contact-card {
+            background-color: #323946;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-card:hover, .bg-card:hover {
+            border-color: #00d2ff;
+            transform: translateY(-5px);
+        }
+
+        /* Hover Reveal Effect for Contact & Projects */
+        .reveal-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, #00d2ff, #0bdbe6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.5s ease;
+            color: #1f242d;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .contact-card:hover .reveal-overlay, .project-group:hover .reveal-overlay {
+            opacity: 1;
+        }
+
+        .btn-glow {
+            background-color: #00d2ff;
+            color: #1f242d;
+            box-shadow: 0 0 1rem #00d2ff;
+        }
+        .btn-glow:hover { transform: scale(1.05); }
+
+        /* --- LIGHT MODE OVERRIDES --- */
+        body.light-mode { background-color: #ffffff !important; color: #000000 !important; }
+        body.light-mode nav { background-color: #ffffff !important; border-bottom: 1px solid #e5e7eb; }
+        body.light-mode nav .logo-text, body.light-mode nav .nav-link { color: #000000 !important; }
+        body.light-mode section { background-color: #ffffff !important; }
+        body.light-mode .skill-card, body.light-mode .bg-card, body.light-mode .contact-card {
+            background-color: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+            color: #000000 !important;
+        }
+        body.light-mode .text-gray-400, body.light-mode .text-gray-300 { color: #1a1a1a !important; }
+    </style>
+</head>
+<body class="font-sans">
+
+    <nav class="sticky top-0 z-50 bg-[#1f242d] flex justify-between items-center px-10 py-6 max-w-7xl mx-auto border-b border-gray-800">
+        <div class="text-2xl font-bold text-cyan-400 logo-text">Nagaraj Umatar.</div>
+        <div class="hidden md:flex space-x-8 text-gray-300 font-medium">
+            <a href="#home" class="nav-link hover:text-cyan-400 transition">Home</a>
+            <a href="#about" class="nav-link hover:text-cyan-400 transition">About</a>
+            <a href="#skills" class="nav-link hover:text-cyan-400 transition">Skills</a>
+            <a href="#experience" class="nav-link hover:text-cyan-400 transition">Experience</a>
+            <a href="#projects" class="nav-link hover:text-cyan-400 transition">Projects</a>
+            <a href="#contact" class="nav-link hover:text-cyan-400 transition">Contact</a>
+        </div>
+        <div>
+            <i id="theme-toggle" class="fas fa-moon text-xl text-cyan-400 cursor-pointer hover:scale-110 transition"></i>
+        </div>
+    </nav>
+
+    <main id="home" class="max-w-7xl mx-auto px-10 py-20 flex flex-col md:flex-row items-center justify-between">
+        <div class="md:w-1/2 space-y-6">
+            <h3 class="text-xl font-semibold text-gray-200">Hello, It's Me</h3>
+            <h1 class="text-6xl font-bold">Nagaraj Umatar</h1>
+            <h2 class="text-3xl font-bold">And I'm a <span id="typing-text" class="text-cyan-400"></span></h2>
+            <p class="text-gray-400 leading-relaxed text-lg">
+                I am a dedicated and SAP ABAP–certified trainee with hands-on experience in core ABAP concepts. I specialize in developing efficient and scalable solutions within SAP S/4HANA systems, with practical exposure to performance tuning, debugging, and end-to-end RICEFW development. I am passionate about building clean, optimized ABAP programs that meet real business requirements.
+            </p>
+            <div class="flex space-x-4">
+                <a href="https://linkedin.com/in/nagaraj-umatar" target="_blank" class="w-10 h-10 border border-cyan-400 rounded-full flex items-center justify-center text-cyan-400 hover:bg-cyan-400 hover:text-black transition">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/NAGARAJDU" target="_blank" class="w-10 h-10 border border-cyan-400 rounded-full flex items-center justify-center text-cyan-400 hover:bg-cyan-400 hover:text-black transition">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <a href="Resume.pdf" download="Nagaraj_Umatar_Resume.pdf" class="inline-block bg-cyan-400 text-black px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition">Download Resume</a>
+        </div>
+        <div class="md:w-1/2 flex justify-center mt-12 md:mt-0">
+            <div class="relative w-80 h-80">
+                <img src="images/NAGARAJ NU.jpg" alt="Nagaraj Umatar" class="w-full h-full object-cover rounded-full profile-border">
+            </div>
+        </div>
+    </main>
+
+    <section id="about" class="min-h-screen py-20 flex flex-col md:flex-row items-center justify-center gap-20 px-[10%]">
+        <div class="md:w-[400px] h-[400px] bg-white rounded-2xl flex items-center justify-center shadow-lg border border-gray-200">
+            <h2 class="text-black text-8xl font-bold uppercase tracking-tighter">About</h2>
+        </div>
+        <div class="md:w-1/2 space-y-6">
+            <h2 class="text-5xl font-bold">About <span class="text-cyan">Me</span></h2>
+            <h3 class="text-2xl font-bold text-gray-200">SAP ABAP Developer</h3>
+            <p class="text-gray-300 text-lg leading-relaxed">
+                Welcome to my technical portfolio. I am an aspiring SAP ABAP Consultant with three months of intensive, hands-on training in ABAP development and SAP S/4HANA. This portfolio serves as a practical showcase of my work, including custom reports, ALV developments, Smart Forms for invoice processing, debugging, and performance-oriented ABAP solutions. Through real-time business scenarios and project-based learning, I aim to build efficient, scalable, and maintainable SAP solutions aligned with enterprise requirements.
+            </p>
+            <a href="#contact" class="inline-block btn-glow px-8 py-3 rounded-full font-bold transition">Let's Talk</a>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 px-[10%]">
+        <h2 class="text-5xl font-bold text-center mb-16">My <span class="text-cyan-400">Skills</span></h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="skill-card p-8 rounded-2xl flex flex-col items-center justify-center">
+                <i class="fas fa-layer-group text-5xl text-cyan-400 mb-6"></i>
+                <h3 class="skill-title text-xl font-bold text-center">RICEFW</h3>
+            </div>
+            <div class="skill-card p-8 rounded-2xl flex flex-col items-center justify-center">
+                <i class="fas fa-server text-5xl text-cyan-400 mb-6"></i>
+                <h3 class="skill-title text-xl font-bold text-center">ABAP S/4HANA</h3>
+            </div>
+            <div class="skill-card p-8 rounded-2xl flex flex-col items-center justify-center">
+                <i class="fas fa-database text-5xl text-cyan-400 mb-6"></i>
+                <h3 class="skill-title text-xl font-bold text-center">Data Dictionary</h3>
+            </div>
+            <div class="skill-card p-8 rounded-2xl flex flex-col items-center justify-center">
+                <i class="fas fa-file-invoice text-5xl text-cyan-400 mb-6"></i>
+                <h3 class="skill-title text-xl font-bold text-center">ALV Reports</h3>
+            </div>
+            <div class="skill-card p-8 rounded-2xl flex flex-col items-center justify-center">
+                <i class="fas fa-desktop text-5xl text-cyan-400 mb-6"></i>
+                <h3 class="skill-title text-xl font-bold text-center">Module Pool</h3>
+            </div>
+            <div class="skill-card p-8 rounded-2xl flex flex-col items-center justify-center">
+                <i class="fas fa-code text-5xl text-cyan-400 mb-6"></i>
+                <h3 class="skill-title text-xl font-bold text-center">OOPS ABAP</h3>
+            </div>
+            <div class="skill-card p-8 rounded-2xl flex flex-col items-center justify-center">
+                <i class="fas fa-bolt text-5xl text-cyan-400 mb-6"></i>
+                <h3 class="skill-title text-xl font-bold text-center">Enhancements</h3>
+            </div>
+            <div class="skill-card p-8 rounded-2xl flex flex-col items-center justify-center">
+                <i class="fas fa-exchange-alt text-5xl text-cyan-400 mb-6"></i>
+                <h3 class="skill-title text-xl font-bold text-center">IDOCS/BAPI/BADI</h3>
+            </div>
+            <div class="skill-card p-8 rounded-2xl flex flex-col items-center justify-center">
+                <i class="fas fa-share-alt text-5xl text-cyan-400 mb-6"></i>
+                <h3 class="skill-title text-xl font-bold text-center">RFC Modules</h3>
+            </div>
+            <div class="skill-card p-8 rounded-2xl flex flex-col items-center justify-center">
+                <i class="fas fa-file-export text-5xl text-cyan-400 mb-6"></i>
+                <h3 class="skill-title text-xl font-bold text-center">Data Migration</h3>
+            </div>
+            <div class="skill-card p-8 rounded-2xl flex flex-col items-center justify-center">
+                <i class="fas fa-print text-5xl text-cyan-400 mb-6"></i>
+                <h3 class="skill-title text-xl font-bold text-center">Smart Forms</h3>
+            </div>
+            <div class="skill-card p-8 rounded-2xl flex flex-col items-center justify-center">
+                <i class="fas fa-cloud text-5xl text-cyan-400 mb-6"></i>
+                <h3 class="skill-title text-xl font-bold text-center">CDS & OData</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 px-[10%]">
+        <h2 class="text-5xl font-bold text-center mb-20">Work <span class="text-cyan">Experience</span></h2>
+        <div class="relative max-w-5xl mx-auto">
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-cyan-400 h-full hidden md:block"></div>
+            
+            <div class="relative mb-12 flex flex-col md:flex-row items-center w-full">
+                <div class="md:w-1/2 md:pr-12 md:text-right">
+                    <div class="bg-card p-8 rounded-2xl">
+                        <span class="text-cyan font-bold"><i class="fas fa-calendar-alt mr-2"></i>Sept 2025 – Dec 2025</span>
+                        <h3 class="text-2xl font-bold mt-2">SAP ABAP HANA Trainee</h3>
+                        <h4 class="text-lg mb-4 italic opacity-80">RIA Institute of Technology, Bengaluru</h4>
+                        <ul class="text-sm leading-relaxed space-y-2 opacity-90">
+                            <li>• Completed 3-month hands-on training on SAP ABAP and S/4HANA platform.</li>
+                            <li>• Developed programs using Data Dictionary, Internal Tables, and ALV Reports.</li>
+                            <li>• Worked on Open SQL, BAPI, and BADI for data integration.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#1f242d] border-4 border-cyan-400 rounded-full z-10 hidden md:block shadow-[0_0_15px_#00d2ff]"></div>
+                <div class="md:w-1/2"></div>
+            </div>
+
+            <div class="relative mb-12 flex flex-col md:flex-row items-center w-full">
+                <div class="md:w-1/2"></div>
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#1f242d] border-4 border-cyan-400 rounded-full z-10 hidden md:block shadow-[0_0_15px_#00d2ff]"></div>
+                <div class="md:w-1/2 md:pl-12">
+                    <div class="bg-card p-8 rounded-2xl">
+                        <span class="text-cyan font-bold"><i class="fas fa-calendar-alt mr-2"></i>Feb 2025 – May 2025</span>
+                        <h3 class="text-2xl font-bold mt-2">Full-Stack Web Development Intern</h3>
+                        <h4 class="text-lg mb-4 italic opacity-80">ParvaM ConsulTech Pvt. Ltd.</h4>
+                        <ul class="text-sm leading-relaxed space-y-2 opacity-90">
+                            <li>• Developed responsive front-end interfaces using HTML, CSS, and JavaScript.</li>
+                            <li>• Built backend services using Java, Spring Boot and MySQL.</li>
+                            <li>• Collaborated in agile sprints for full development lifecycle.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 px-[10%]">
+        <h2 class="text-5xl font-bold text-center mb-16">Latest <span class="text-cyan">Projects</span></h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="relative group project-group bg-card h-[450px] rounded-2xl overflow-hidden flex items-center justify-center">
+                <h2 class="text-gray-500 text-7xl font-bold opacity-20 group-hover:opacity-10 transition duration-500 text-center px-4">SmartForms</h2>
+                <div class="reveal-overlay overflow-y-auto">
+                    <h3 class="text-2xl font-bold mb-2 uppercase">Invoice Printing (SAP ABAP)</h3>
+                    <p class="text-xs font-bold mb-4 italic">Nov 2025 - Dec 2025 | RIA Institute of Tech</p>
+                    <p class="text-sm font-medium mb-6 leading-relaxed">
+                        Developed custom Smartform <b>ZSF_INVOICE_NU</b>. Configured form attributes, interface parameters, and layout windows for header, logo, and item tables. Successfully executed print previews via output device LP01.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-2">
+                         <span class="px-3 py-1 bg-[#1f242d] text-[#00d2ff] text-[10px] rounded-full font-bold">SAP ABAP</span>
+                         <span class="px-3 py-1 bg-[#1f242d] text-[#00d2ff] text-[10px] rounded-full font-bold">SMARTFORMS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative group project-group bg-card h-[450px] rounded-2xl overflow-hidden flex items-center justify-center">
+                <h2 class="text-gray-500 text-7xl font-bold opacity-20 group-hover:opacity-10 transition duration-500 text-center px-4">ALV Excel</h2>
+                <div class="reveal-overlay overflow-y-auto">
+                    <h3 class="text-2xl font-bold mb-2 uppercase">Excel Upload to SAP (ABAP)</h3>
+                    <p class="text-sm font-medium mb-6 leading-relaxed text-left">
+                        Developed an ABAP program to upload Excel data into SAP Z-tables using <b>TEXTCONVERT</b>. 
+                    </p>
+                    <ul class="text-[11px] font-bold mb-6 space-y-1 list-disc list-inside text-left">
+                        <li>File selection screen for .xls browsing</li>
+                        <li>Data conversion using TEXTCONVERT FM</li>
+                        <li>Validation before DB insertion</li>
+                        <li>Efficient multi-row LOOP & INSERT logic</li>
+                    </ul>
+                    <div class="flex flex-wrap justify-center gap-2">
+                         <span class="px-3 py-1 bg-[#1f242d] text-[#00d2ff] text-[10px] rounded-full font-bold">ABAP</span>
+                         <span class="px-3 py-1 bg-[#1f242d] text-[#00d2ff] text-[10px] rounded-full font-bold">INTERNAL TABLES</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-6 flex flex-col items-center justify-center">
+        <h2 class="text-5xl font-bold mb-12">Get In <span class="text-cyan">Touch</span></h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
+            <div class="contact-card h-32 rounded-2xl flex items-center justify-center">
+                <div class="flex items-center gap-5"><i class="fas fa-envelope text-cyan-400 text-4xl"></i><h3 class="text-2xl font-bold opacity-20">Email</h3></div>
+                <div class="reveal-overlay">
+                    <p class="text-xs uppercase font-bold mb-1">Direct Message</p>
+                    <p class="font-bold text-lg">nagarajumatar4@gmail.com</p>
+                </div>
+            </div>
+            <a href="http://linkedin.com/in/nagarajumatar" target="_blank" class="contact-card h-32 rounded-2xl flex items-center justify-center block">
+                <div class="flex items-center gap-5"><i class="fab fa-linkedin-in text-cyan-400 text-4xl"></i><h3 class="text-2xl font-bold opacity-20">LinkedIn</h3></div>
+                <div class="reveal-overlay">
+                    <p class="text-xs uppercase font-bold mb-1">Professional Profile</p>
+                    <p class="font-bold text-lg break-all">linkedin.com/in/nagarajumatar</p>
+                </div>
+            </a>
+            <div class="contact-card h-32 rounded-2xl flex items-center justify-center">
+                <div class="flex items-center gap-5"><i class="fas fa-phone-alt text-cyan-400 text-4xl"></i><h3 class="text-2xl font-bold opacity-20">Phone</h3></div>
+                <div class="reveal-overlay">
+                    <p class="text-xs uppercase font-bold mb-1">Contact Number</p>
+                    <p class="font-bold text-lg">+91 7406996609</p>
+                </div>
+            </div>
+            <div class="contact-card h-32 rounded-2xl flex items-center justify-center">
+                <div class="flex items-center gap-5"><i class="fas fa-map-marker-alt text-cyan-400 text-4xl"></i><h3 class="text-2xl font-bold opacity-20">Location</h3></div>
+                <div class="reveal-overlay">
+                    <p class="text-xs uppercase font-bold mb-1">Current Base</p>
+                    <p class="font-bold text-lg">Bengaluru, Karnataka</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center border-t border-gray-800 transition-colors">
+        <p>© 2026 Nagaraj Umatar. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            const isLight = body.classList.contains('light-mode');
+            themeToggle.classList.replace(isLight ? 'fa-moon' : 'fa-sun', isLight ? 'fa-sun' : 'fa-moon');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+
+        new Typed('#typing-text', {
+            strings: ['SAP ABAP Developer', 'S/4HANA Certified Trainee', 'Aspiring SAP Consultant'],
+            typeSpeed: 70,
+            backSpeed: 50,
+            backDelay: 2000,
+            loop: true
+        });
+    </script>
+</body>
+</html>
