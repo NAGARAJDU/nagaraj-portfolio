@@ -4,7 +4,7 @@ Welcome to my personal portfolio website!
 This portfolio showcases my "SAP ABAP development skills, projects, and experience" gained through hands-on training and real-world practice.
 
 🔗 Live Portfolio:
-(Add your deployed portfolio link here)
+(nagarajdu.github.io/nagaraj-portfolio/)
 
 ---
 
