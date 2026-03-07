@@ -246,3 +246,4 @@ This project is open-source and available under the MIT License.
 ---
 
 © 2026 Nagaraj Umatar – All Rights Reserved
+# nagaraj-portfolio
