@@ -141,9 +141,6 @@ ParvaM ConsulTech Pvt. Ltd.
 📧 Email:  
 nagarajumatar4@gmail.com  
 
-📞 Phone:  
-+91 7406996609  
-
 🔗 LinkedIn:  
 https://linkedin.com/in/nagarajumatar  
 
