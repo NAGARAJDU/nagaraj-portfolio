@@ -27,23 +27,26 @@
         
         nav, section, footer { transition: background-color 0.3s, border-color 0.3s; }
 
-        /* Profile Image Animations */
-        .profile-border {
+        /* Dynamic Fluid Morphing Profile Image Shapes */
+        .profile-blob {
             border: 4px solid #00d2ff;
-            box-shadow: 0 0 20px #00d2ff;
-            animation: float 4s ease-in-out infinite, pulse-glow 3s infinite;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: morphBlob 8s ease-in-out infinite, pulseGlow 4s ease-in-out infinite;
+            transition: all 0.5s ease;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        @keyframes morphBlob {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
         }
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 210, 255, 0.6); }
-            50% { box-shadow: 0 0 40px rgba(0, 210, 255, 0.9); }
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1) rotate(0deg); box-shadow: 0 0 25px rgba(0, 210, 255, 0.5); }
+            50% { transform: scale(1.03) rotate(3deg); box-shadow: 0 0 45px rgba(11, 219, 230, 0.8); }
         }
 
         /* Card Styles */
-        .skill-card, .bg-card, .contact-card {
+        .skill-card, .bg-card {
             background-color: #323946;
             border: 2px solid transparent;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -56,7 +59,7 @@
             transform: translateY(-5px);
         }
 
-        /* Hover Reveal Effect for Contact & Projects */
+        /* Hover Reveal Effect for Projects */
         .reveal-overlay {
             position: absolute;
             inset: 0;
@@ -71,7 +74,7 @@
             padding: 1.5rem;
             text-align: center;
         }
-        .contact-card:hover .reveal-overlay, .project-group:hover .reveal-overlay {
+        .project-group:hover .reveal-overlay {
             opacity: 1;
         }
 
@@ -82,17 +85,41 @@
         }
         .btn-glow:hover { transform: scale(1.05); }
 
+        /* Form Input Theme overrides */
+        .form-input {
+            background-color: #323946;
+            border: 2px solid transparent;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: #00d2ff;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+        }
+        .form-label {
+            color: #ffffff;
+            opacity: 0.8;
+            transition: color 0.3s ease;
+        }
+
         /* --- LIGHT MODE OVERRIDES --- */
         body.light-mode { background-color: #f1f5f9 !important; color: #0f172a !important; }
         body.light-mode nav { background-color: #ffffff !important; border-bottom: 1px solid #e2e8f0; }
         body.light-mode nav .logo-text, body.light-mode nav .nav-link { color: #0f172a !important; }
         body.light-mode nav .nav-link:hover { color: #00d2ff !important; }
         body.light-mode section { background-color: #f1f5f9 !important; }
+        
+        /* Typography overrides for light mode */
+        body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode h4 { color: #0f172a !important; }
         body.light-mode h3.text-gray-200, body.light-mode h2.text-gray-200 { color: #334155 !important; }
         body.light-mode p.text-gray-400, body.light-mode p.text-gray-300 { color: #475569 !important; }
+        body.light-mode .form-label { color: #0f172a !important; opacity: 0.9; }
+
+        /* Component block overrides for light mode */
         body.light-mode .about-accent-box { background-color: #ffffff !important; border-color: #cbd5e1 !important; }
         body.light-mode .about-accent-text { color: #0f172a !important; }
-        body.light-mode .skill-card, body.light-mode .bg-card, body.light-mode .contact-card {
+        body.light-mode .skill-card, body.light-mode .bg-card, body.light-mode #message-box-card {
             background-color: #ffffff !important;
             border: 2px solid #e2e8f0 !important;
             color: #0f172a !important;
@@ -100,6 +127,12 @@
         }
         body.light-mode .skill-card:hover, body.light-mode .bg-card:hover { border-color: #00d2ff !important; }
         body.light-mode .project-group h2 { color: #94a3b8 !important; }
+        body.light-mode .form-input {
+            background-color: #f8fafc !important;
+            border: 2px solid #cbd5e1 !important;
+            color: #0f172a !important;
+        }
+        body.light-mode .form-input::placeholder { color: #94a3b8 !important; }
     </style>
 </head>
 <body class="font-sans">
@@ -139,7 +172,7 @@
         </div>
         <div class="md:w-1/2 flex justify-center mt-12 md:mt-0">
             <div class="relative w-80 h-80">
-                <img src="images/NAGARAJ NU.jpg" alt="Nagaraj Umatar" class="w-full h-full object-cover rounded-full profile-border">
+                <img src="images/NAGARAJ NU.jpg" alt="Nagaraj Umatar" class="w-full h-full object-cover profile-blob">
             </div>
         </div>
     </main>
@@ -292,36 +325,33 @@
         </div>
     </section>
 
-    <section id="contact" class="py-20 px-6 flex flex-col items-center justify-center">
-        <h2 class="text-5xl font-bold mb-12">Get In <span class="text-cyan">Touch</span></h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
-            <div class="contact-card h-32 rounded-2xl flex items-center justify-center">
-                <div class="flex items-center gap-5"><i class="fas fa-envelope text-cyan-400 text-4xl"></i><h3 class="text-2xl font-bold opacity-20">Email</h3></div>
-                <div class="reveal-overlay">
-                    <p class="text-xs uppercase font-bold mb-1">Direct Message</p>
-                    <p class="font-bold text-lg">nagarajumatar4@gmail.com</p>
-                </div>
-            </div>
-            <a href="http://linkedin.com/in/nagarajumatar" target="_blank" class="contact-card h-32 rounded-2xl flex items-center justify-center block">
-                <div class="flex items-center gap-5"><i class="fab fa-linkedin-in text-cyan-400 text-4xl"></i><h3 class="text-2xl font-bold opacity-20">LinkedIn</h3></div>
-                <div class="reveal-overlay">
-                    <p class="text-xs uppercase font-bold mb-1">Professional Profile</p>
-                    <p class="font-bold text-lg break-all">linkedin.com/in/nagarajumatar</p>
-                </div>
-            </a>
-            <div class="contact-card h-32 rounded-2xl flex items-center justify-center">
-                <div class="flex items-center gap-5"><i class="fas fa-phone-alt text-cyan-400 text-4xl"></i><h3 class="text-2xl font-bold opacity-20">Phone</h3></div>
-                <div class="reveal-overlay">
-                    <p class="text-xs uppercase font-bold mb-1">Contact Number</p>
-                    <p class="font-bold text-lg">+91 7406996609</p>
-                </div>
-            </div>
-            <div class="contact-card h-32 rounded-2xl flex items-center justify-center">
-                <div class="flex items-center gap-5"><i class="fas fa-map-marker-alt text-cyan-400 text-4xl"></i><h3 class="text-2xl font-bold opacity-20">Location</h3></div>
-                <div class="reveal-overlay">
-                    <p class="text-xs uppercase font-bold mb-1">Location</p>
-                    <p class="font-bold text-lg">Bengaluru, Karnataka</p>
-                </div>
+    <section id="contact" class="py-20 px-[10%] max-w-4xl mx-auto">
+        <h2 class="text-5xl font-bold text-center mb-16">Get In <span class="text-cyan">Touch</span></h2>
+        
+        <div class="w-full flex justify-center">
+            <div id="message-box-card" class="w-full max-w-2xl bg-[#323946] border 2px solid transparent rounded-2xl p-8 shadow-lg transition-all duration-300">
+                <h3 class="text-2xl font-bold mb-6 text-gray-200">Send Me A Message</h3>
+                <form id="portfolio-contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                    <input type="hidden" name="access_key" value="2f917d9e-2d9c-47c2-83ea-d47defa4aefa">
+                    <input type="hidden" name="subject" value="New Portfolio Message from NagarajUmatar">
+                    <input type="checkbox" name="botcheck" id="" style="display: none;">
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2 form-label">Your Name</label>
+                        <input type="text" name="name" required class="w-full px-4 py-3 rounded-xl form-input" placeholder="Enter your full name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 form-label">Your Email Address</label>
+                        <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl form-input" placeholder="name@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 form-label">Message</label>
+                        <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-xl form-input resize-none" placeholder="Leave your message here, and I will reach out to you soon."></textarea>
+                    </div>
+                    <button type="submit" id="form-submit-btn" class="w-full btn-glow py-3 rounded-xl font-bold shadow-md transition duration-300">
+                        <i class="fas fa-paper-plane mr-2"></i>Send Message
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -362,6 +392,42 @@
                 userAgent: navigator.userAgent
             };
             console.log("Visitor tracker active:", visitorData);
+        });
+
+        // Background AJAX Interceptor to handle safe delivery and clear form fields cleanly
+        document.getElementById('portfolio-contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const btn = document.getElementById('form-submit-btn');
+            const originalTxt = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            
+            const formData = new FormData(form);
+            
+            fetch(form.action, {
+                method: form.method,
+                body: formData
+            })
+            .then(async (response) => {
+                let res = await response.json();
+                if (response.status == 200) {
+                    // Updated the localized success notification popup message copy
+                    alert("Thank you! Your message has been sent successfully. I will get back to you as soon as possible.");
+                    form.reset(); // Auto-delete all characters inside inputs back to empty
+                } else {
+                    alert("Submission Error: " + res.message);
+                }
+            })
+            .catch(error => {
+                alert("Network error. Please try again later.");
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalTxt;
+            });
         });
     </script>
 </body>
