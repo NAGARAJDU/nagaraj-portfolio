@@ -61,7 +61,7 @@ The portfolio contains the following sections:
 - Skills
 - Work Experience
 - Projects
-- Contact Information
+- Contact
 
 ---
 
