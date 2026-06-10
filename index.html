@@ -6,11 +6,20 @@
     <title>Nagaraj Umatar | SAP ABAP Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
     <style>
         /* Base Dark Theme - #1f242d */
         body {
             background-color: #1f242d;
-            color: white;
+            color: #ffffff;
             scroll-behavior: smooth;
             transition: background-color 0.3s, color 0.3s;
         }
@@ -74,16 +83,23 @@
         .btn-glow:hover { transform: scale(1.05); }
 
         /* --- LIGHT MODE OVERRIDES --- */
-        body.light-mode { background-color: #ffffff !important; color: #000000 !important; }
-        body.light-mode nav { background-color: #ffffff !important; border-bottom: 1px solid #e5e7eb; }
-        body.light-mode nav .logo-text, body.light-mode nav .nav-link { color: #000000 !important; }
-        body.light-mode section { background-color: #ffffff !important; }
+        body.light-mode { background-color: #f1f5f9 !important; color: #0f172a !important; }
+        body.light-mode nav { background-color: #ffffff !important; border-bottom: 1px solid #e2e8f0; }
+        body.light-mode nav .logo-text, body.light-mode nav .nav-link { color: #0f172a !important; }
+        body.light-mode nav .nav-link:hover { color: #00d2ff !important; }
+        body.light-mode section { background-color: #f1f5f9 !important; }
+        body.light-mode h3.text-gray-200, body.light-mode h2.text-gray-200 { color: #334155 !important; }
+        body.light-mode p.text-gray-400, body.light-mode p.text-gray-300 { color: #475569 !important; }
+        body.light-mode .about-accent-box { background-color: #ffffff !important; border-color: #cbd5e1 !important; }
+        body.light-mode .about-accent-text { color: #0f172a !important; }
         body.light-mode .skill-card, body.light-mode .bg-card, body.light-mode .contact-card {
-            background-color: #f8fafc !important;
-            border-color: #e2e8f0 !important;
-            color: #000000 !important;
+            background-color: #ffffff !important;
+            border: 2px solid #e2e8f0 !important;
+            color: #0f172a !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
-        body.light-mode .text-gray-400, body.light-mode .text-gray-300 { color: #1a1a1a !important; }
+        body.light-mode .skill-card:hover, body.light-mode .bg-card:hover { border-color: #00d2ff !important; }
+        body.light-mode .project-group h2 { color: #94a3b8 !important; }
     </style>
 </head>
 <body class="font-sans">
@@ -129,8 +145,8 @@
     </main>
 
     <section id="about" class="min-h-screen py-20 flex flex-col md:flex-row items-center justify-center gap-20 px-[10%]">
-        <div class="md:w-[400px] h-[400px] bg-white rounded-2xl flex items-center justify-center shadow-lg border border-gray-200">
-            <h2 class="text-black text-8xl font-bold uppercase tracking-tighter">About</h2>
+        <div class="md:w-[400px] h-[400px] bg-[#323946] rounded-2xl flex items-center justify-center shadow-lg border border-gray-700 about-accent-box transition-colors duration-300">
+            <h2 class="text-white text-8xl font-bold uppercase tracking-tighter about-accent-text transition-colors duration-300">About</h2>
         </div>
         <div class="md:w-1/2 space-y-6">
             <h2 class="text-5xl font-bold">About <span class="text-cyan">Me</span></h2>
@@ -337,6 +353,15 @@
             backSpeed: 50,
             backDelay: 2000,
             loop: true
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const visitorData = {
+                page: window.location.pathname,
+                time: new Date().toLocaleString(),
+                userAgent: navigator.userAgent
+            };
+            console.log("Visitor tracker active:", visitorData);
         });
     </script>
 </body>
