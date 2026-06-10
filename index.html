@@ -168,7 +168,7 @@
                     <i class="fab fa-github"></i>
                 </a>
             </div>
-            <a href="Resume.pdf" download="Nagaraj_Umatar_Resume.pdf" class="inline-block bg-cyan-400 text-black px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition">Download Resume</a>
+            <a href="https://drive.google.com/file/d/1qNgkbX3JZKzEDSQu3WX6k6DF0HbhGKMI/preview" target="_blank" class="inline-block bg-cyan-400 text-black px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition">Download Resume</a>
         </div>
         <div class="md:w-1/2 flex justify-center mt-12 md:mt-0">
             <div class="relative w-80 h-80">
@@ -414,7 +414,6 @@
             .then(async (response) => {
                 let res = await response.json();
                 if (response.status == 200) {
-                    // Updated the localized success notification popup message copy
                     alert("Thank you! Your message has been sent successfully. I will get back to you as soon as possible.");
                     form.reset(); // Auto-delete all characters inside inputs back to empty
                 } else {
